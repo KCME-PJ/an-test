@@ -143,7 +143,7 @@ try {
                   </div>
                   <div class="x_content">
                     <form class="form-horizontal form-label-left"
-                    action="work_form_done.php" enctype="multipart/form-data" method="post" name="form" id="form" data-toggle="validator">
+                    action="work_form_done.php" enctype="multipart/form-data" method="post" name="siform" id="siform" data-toggle="validator">
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">案件名</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
@@ -192,9 +192,20 @@ try {
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">写真添付</label>
+                        <!--
                         <div id="dropzone" class="dropzone col-md-9 col-sm-9 col-xs-12">
                           <div class="dz-default dz-message"></div>
                         </div>
+                        -->
+                        
+                        <div id="dropzonePreview" class="wssdropzone col-md-9 col-sm-9 col-xs-12" >
+		 	                    <div class="dz-message needsclick fallback" >		 		                    
+		 		                      <div class="fallback">
+		 			                      <input name="dzfileform-file" id="id_dzfileform-file" type="file" multiple />
+		 		                      </div>
+			                    </div>
+                        </div>
+                        
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">現場責任者</label>
@@ -326,7 +337,10 @@ try {
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                           <button type="reset" class="btn btn-primary">リセット</button>
+                          <!--
                           <button type="submit" class="btn btn-success">入局情報を送信</button>
+                          -->
+                          <input type="button" id="wfsform" value="入局情報を送信" />
                         </div>
                       </div>
                     </form>
@@ -336,6 +350,72 @@ try {
             </div>
           </div>
         </div>
+
+        <script src="../vendors/jquery/dist/jquery.min.js"></script>
+        <script>
+
+        $(document).ready(function() {
+          //alert($('#form'));
+          //alert($('#dropzonePreiview'));
+          wss_pack_dropzone_file('fileupload.php', '#siform', 'dzfileform-file', '#dropzonePreview', null);
+        });
+function wss_pack_dropzone_file(url, frmn, pnm, ctn, uactchk) {
+
+var myDropzone = new Dropzone(frmn, {
+  url: url,
+  paramName: pnm,
+  parallelUploads: 100,
+  uploadMultiple:true,
+  addRemoveLinks: true,
+  dictRemoveFile: '<br><button>Remove file</button>',
+  autoProcessQueue: false,
+  previewsContainer: ctn,
+  clickable: ctn,
+ 
+  init: function() {
+    mydz = this;
+    $("input[id^='wfsform']").click(
+
+      function() {
+        subact = this.id.substring('wfsform'.length);
+        req = true;
+        if(uactchk != null) {
+          for(let [key, value] of Object.entries(uactchk)) {
+            if(subact == key) {
+              if (!value())
+                return;
+            }
+          }
+        }
+
+        if(req){
+          //alert('go???');
+          ///*
+          if (mydz.getQueuedFiles().length > 0) {
+            mydz.processQueue();
+          } else {
+            $(frmn).submit();
+          }
+          //*/
+        }
+      }
+    );
+
+    this.on("success", function() {
+      location.reload();
+    });
+
+    this.on("complete", function (file) {
+      if (this.getUploadingFiles().length == 0 && this.getQueuedFiles().length == 0) {
+        }
+    });
+  }
+});
+
+}
+        </script>
+
+
 
         <!-- /page content -->
 <?php require '../template/footer.html'; ?>
