@@ -12,7 +12,9 @@ require_once '../common/database.php';
 require_once '../template/tel_form.php';
 $email=$_SESSION['join']['email'];
 $sql = <<<SQL
-SELECT * FROM members INNER JOIN companies ON members.co_id=companies.co_id WHERE email="$email";
+SELECT * FROM members
+INNER JOIN companies ON members.co_id=companies.co_id
+WHERE email="$email";
 SQL;
 try {
     $dbh = getDb();
@@ -82,7 +84,9 @@ try {
 require_once '../common/database.php';
 $p_id = htmlspecialchars($_GET['id']);
 $sql = <<<SQL
-SELECT * FROM projects INNER JOIN customers ON projects.cus_id=customers.cus_id WHERE pro_id=?
+SELECT * FROM projects
+INNER JOIN customers ON projects.cus_id=customers.cus_id
+WHERE pro_id=?
 SQL;
 
 try {
@@ -143,7 +147,8 @@ try {
                   </div>
                   <div class="x_content">
                     <form class="form-horizontal form-label-left"
-                    action="work_form_done.php" enctype="multipart/form-data" method="post" name="siform" id="siform" data-toggle="validator">
+                    action="work_form_done.php" enctype="multipart/form-data" 
+                    method="post" name="siform" id="siform" data-toggle="validator">
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">案件名</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
@@ -199,11 +204,11 @@ try {
                         -->
                         
                         <div id="dropzonePreview" class="wssdropzone col-md-9 col-sm-9 col-xs-12" >
-		 	                    <div class="dz-message needsclick fallback" >		 		                    
-		 		                      <div class="fallback">
-		 			                      <input name="dzfileform-file" id="id_dzfileform-file" type="file" multiple />
-		 		                      </div>
-			                    </div>
+                                <div class="dz-message needsclick fallback" >                                   
+                                      <div class="fallback">
+                                          <input name="dzfileform-file" id="id_dzfileform-file" type="file" multiple />
+                                      </div>
+                                </div>
                         </div>
                         
                       </div>
