@@ -251,6 +251,36 @@ SQL;
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4><b>地震情報 tenki.jp</b></h4>
+                          </div>
+                          <div class="panel-body">
+                            <p>
+                            <a data-height="400" data-chrome="noheader nofooter" class="twitter-timeline"
+                            href="https://twitter.com/tenkijp_jishin?ref_src=twsrc%5Etfw">
+                            Tweets by tenkijp_jishin</a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4><b>電車遅延なうbot</b></h4>
+                          </div>
+                          <div class="panel-body">
+                            <p>
+                            <a data-height="400" data-chrome="noheader nofooter" class="twitter-timeline"
+                            href="https://twitter.com/traindelay?ref_src=twsrc%5Etfw">
+                            Tweets by traindelay</a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
 
                     </div>
                   </div>
