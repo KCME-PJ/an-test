@@ -86,12 +86,12 @@ try {
         $pro_type = $row['type_id'];
         $pro_name = $row['pro_name'];
         
-        if ($pro_type == 1){
-        $link = "work_form_survey.php?id=$pro_id";
+        if ($pro_type == 1) {
+            $link = "work_form_survey.php?id=$pro_id";
         }
 
-        if ($pro_type == 2){
-        $link = "work_form_const.php?id=$pro_id";
+        if ($pro_type == 2) {
+            $link = "work_form_const.php?id=$pro_id";
         }
 
           print <<<EOD
