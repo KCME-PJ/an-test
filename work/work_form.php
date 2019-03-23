@@ -412,13 +412,11 @@ try {
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                           <button type="reset" class="btn btn-primary">リセット</button>
-                          <button type="submit" id="submit" class="btn btn-success">送信</button>
+                          <button type="submit" id="submit" class="btn btn-success" onclick="getid(this);">送信</button>
                           <script>
-                            function () {
-                              ('#submit').click(function() {
-                              var myDropzone = Dropzone.forElement(".dropzone");
-                              myDropzone.processQueue();
-                              }); 
+                            function getid(ele){
+                              var id_value = ele.id;
+                              alert(id_value);
                             };
                           </script>
                         </div>
