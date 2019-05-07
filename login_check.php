@@ -21,11 +21,8 @@ if (!isset($_SESSION['join'])) {
     exit();
 }
 
-$member_email = $_SESSION['join']['email'];
-$member_pass =  $_SESSION['join']['pass'];
-
-$member_email = htmlspecialchars($member_email);
-$member_pass =  htmlspecialchars($member_pass);
+$member_email = htmlspecialchars($_SESSION['join']['email']);
+$member_pass =  htmlspecialchars($_SESSION['join']['pass']);
 
 $member_pass =  hash('sha256', $member_pass);
 
@@ -33,7 +30,11 @@ try {
     $dbh = getDb();
 
     $sql = <<<SQL
-SELECT email, password FROM members WHERE email=? AND password=? AND power_user=1
+SELECT email, password 
+FROM members 
+WHERE email=? 
+AND password=? 
+AND power_user=1
 SQL;
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(1, $member_email, PDO::PARAM_INT);
