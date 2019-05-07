@@ -23,11 +23,8 @@ if (!empty($_POST)) {
         $error['pass'] = 'blank';
     }
 
-    $member_email = $_POST['email'];
-    $member_pass = $_POST['pass'];
-
-    $member_email = htmlspecialchars($member_email);
-    $member_pass = htmlspecialchars($member_pass);
+    $member_email = htmlspecialchars($_POST['email']);
+    $member_pass = htmlspecialchars($_POST['pass']);
 
     if (empty($error)) {
         $_SESSION['join'] = $_POST;

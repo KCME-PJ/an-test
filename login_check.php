@@ -21,8 +21,8 @@ if (!isset($_SESSION['join'])) {
     exit();
 }
 
-$member_email = htmlspecialchars($_SESSION['join']['email']);
-$member_pass =  htmlspecialchars($_SESSION['join']['pass']);
+$member_email = $_SESSION['join']['email'];
+$member_pass =  $_SESSION['join']['pass'];
 
 $member_pass =  hash('sha256', $member_pass);
 
